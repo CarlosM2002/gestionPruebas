@@ -24,6 +24,4 @@ Pasos de instalación:
    - Tester: /tester
    - Dev: /dev
 
-Archivos a adaptar a tu sistema:
-- backend/.env.example -> copiar a backend/.env y cambiar DATABASE_URL (usuario/password/host/puerto/dbname) y JWT_SECRET
-- frontend: si quieres cambiar URL del API, crea archivo .env en frontend con VITE_API_URL=http://localhost:4000/api
+

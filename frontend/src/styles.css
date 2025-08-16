@@ -1,0 +1,4 @@
+body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:20px;background:#f3f4f6}
+.card{background:#fff;padding:16px;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.1);margin-bottom:12px}
+input,select,button,textarea{padding:8px;margin:6px 0;width:100%;box-sizing:border-box}
+nav a{margin-right:12px}

@@ -1,0 +1,10 @@
+import express from 'express';
+import { createPlan, addCasoToPlan, listPlanes, listPlanesForTester, listCasosInPlan } from '../controllers/planesController.js';
+import { authenticate, authorize } from '../middleware/auth.js';
+const router = express.Router();
+router.post('/', authenticate, authorize(['Admin']), createPlan);
+router.post('/agregar', authenticate, authorize(['Admin']), addCasoToPlan);
+router.get('/', authenticate, authorize(['Admin']), listPlanes);
+router.get('/mios', authenticate, authorize(['Tester']), listPlanesForTester);
+router.get('/:id/casos', authenticate, listCasosInPlan);
+export default router;

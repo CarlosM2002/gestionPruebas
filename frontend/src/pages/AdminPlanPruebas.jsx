@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { API } from "../services/api";
-export default function oldAdminDashboard() {
+export default function AdminPlanPruebas() {
   const [tipos, setTipos] = useState([]);
   const [comps, setComps] = useState([]);
   const [casos, setCasos] = useState([]);
@@ -83,83 +83,6 @@ export default function oldAdminDashboard() {
         <h3>Bienvenido Admin</h3>
       </div>
       <div className="card">
-        <h4>Crear Tipo de Componente</h4>
-        <form onSubmit={createTipo}>
-          <input
-            value={tipoForm}
-            onChange={(e) => setTipoForm(e.target.value)}
-            placeholder="Nombre tipo"
-          />
-          <button>Crear</button>
-        </form>
-      </div>
-      <div className="card">
-        <h4>Crear Componente</h4>
-        <form onSubmit={createComponente}>
-          <input
-            placeholder="Nombre"
-            value={compForm.Nombre}
-            onChange={(e) =>
-              setCompForm({ ...compForm, Nombre: e.target.value })
-            }
-          />
-          <input
-            placeholder="Descripcion"
-            value={compForm.Descripcion}
-            onChange={(e) =>
-              setCompForm({ ...compForm, Descripcion: e.target.value })
-            }
-          />
-          <select
-            value={compForm.IdTipoComponente}
-            onChange={(e) =>
-              setCompForm({ ...compForm, IdTipoComponente: e.target.value })
-            }
-          >
-            <option value="">--Tipo--</option>
-            {tipos.map((t) => (
-              <option key={t.IdTipoComponente} value={t.IdTipoComponente}>
-                {t.Nombre}
-              </option>
-            ))}
-          </select>
-          <button>Crear</button>
-        </form>
-      </div>
-      <div className="card">
-        <h4>Crear Caso de Prueba</h4>
-        <form onSubmit={createCaso}>
-          <select
-            value={casoForm.IdComponente}
-            onChange={(e) =>
-              setCasoForm({ ...casoForm, IdComponente: e.target.value })
-            }
-          >
-            <option value="">--Componente--</option>
-            {comps.map((c) => (
-              <option key={c.IdComponente} value={c.IdComponente}>
-                {c.Nombre}
-              </option>
-            ))}
-          </select>
-          <textarea
-            placeholder="Descripcion"
-            value={casoForm.Descripcion}
-            onChange={(e) =>
-              setCasoForm({ ...casoForm, Descripcion: e.target.value })
-            }
-          />
-          <textarea
-            placeholder="Criterios"
-            value={casoForm.CriteriosPrueba}
-            onChange={(e) =>
-              setCasoForm({ ...casoForm, CriteriosPrueba: e.target.value })
-            }
-          />
-          <button>Crear Caso</button>
-        </form>
-      </div>
-      <div className="card">
         <h4>Crear Plan de Prueba</h4>
         <form onSubmit={createPlan}>
           <select
@@ -225,37 +148,6 @@ export default function oldAdminDashboard() {
           </select>
           <button>Agregar</button>
         </form>
-      </div>
-      <div className="card">
-        <h4>Listas</h4>
-        <strong>Tipos</strong>
-        <ul>
-          {tipos.map((t) => (
-            <li key={t.IdTipoComponente}>{t.Nombre}</li>
-          ))}
-        </ul>
-        <strong>Componentes</strong>
-        <ul>
-          {comps.map((c) => (
-            <li key={c.IdComponente}>
-              {c.Nombre} ({c.TipoNombre})
-            </li>
-          ))}
-        </ul>
-        <strong>Casos</strong>
-        <ul>
-          {casos.map((c) => (
-            <li key={c.IdPrueba}>{c.Descripcion}</li>
-          ))}
-        </ul>
-        <strong>Planes</strong>
-        <ul>
-          {planes.map((p) => (
-            <li key={p.IdPlandePrueba}>
-              {p.Descripcion} - {p.TesterName} - {p.FechaEjecucion}
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

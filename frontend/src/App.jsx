@@ -3,9 +3,11 @@ import { Routes, Route, Link, Navigate, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AdminComponentes from "./pages/AdminComponentes";
+import AdminPruebas from './pages/AdminPruebas';
+import AdminPlanPruebas from './pages/AdminPlanPruebas';
+import AdminDashboard from "./pages/AdminDashboard";
 import TesterDashboard from "./pages/TesterDashboard";
 import DevDashboard from "./pages/DevDashboard";
-import AdminPruebas from './pages/AdminPruebas';
 import "./styles/main.css";
 
 function Private({ children, role }) {
@@ -43,8 +45,10 @@ function NavBar() {
       <div className="nav-card">
         <span className="nav-title">Panel Admin</span>
         <div className="nav-buttons">
-          <Link className="nav-btn" to="/admin">Componentes</Link>
+          <Link className="nav-btn" to="/admin">Home</Link>
+          <Link className="nav-btn" to="/admin-componentes">Componentes</Link>
           <Link className="nav-btn" to="/admin-Pruebas">Pruebas</Link>
+          <Link className="nav-btn" to="/admin-Planes">Planes de Pruebas</Link>
           <button className="nav-btn" onClick={handleLogout}>Salir</button>
         </div>
       </div>
@@ -92,8 +96,9 @@ export default function App() {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<AdminDashboard />} />        
         <Route
-          path="/admin"
+          path="/admin-Componentes"
           element={
             <Private role="Admin">
               <AdminComponentes />
@@ -101,6 +106,7 @@ export default function App() {
           }
         />
         <Route path="/admin-pruebas" element={<AdminPruebas />} />
+        <Route path="/admin-planes" element={<AdminPlanPruebas />} />
         <Route
           path="/tester"
           element={

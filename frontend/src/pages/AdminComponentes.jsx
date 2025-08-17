@@ -110,7 +110,11 @@ export default function AdminComponentes() {
   };
 
   return (
-    <div className="card">
+    <div style={{ maxWidth: 1000, margin: "12px auto" }}>
+      <div className="card">
+        <h3>Bienvenido Admin</h3>
+      </div>
+      <div className="card">
       <h4>Tipos de Componente</h4>
       {tipoError && (
         <div style={{ color: "red", margin: "8px 0", fontWeight: "bold" }}>
@@ -223,6 +227,7 @@ export default function AdminComponentes() {
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 }

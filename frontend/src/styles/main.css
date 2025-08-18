@@ -1,23 +1,39 @@
+:root{
+  --bg: #f6f8fa;
+  --primary: #2d6cdf;
+  --primary-600: #174ea6;
+  --muted: #6b7280;
+  --card-bg: #fff;
+  --border: #d0d7de;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-sm: 0 1px 4px rgba(16,24,40,0.04);
+  --shadow-md: 0 6px 20px rgba(16,24,40,0.06);
+  --transition-fast: 180ms cubic-bezier(.2,.8,.2,1);
+}
+
 /* General styles */
 body {
-  background: #f6f8fa;
+  background: var(--bg);
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Header/Nav styles */
 .nav-card {
-  background: #2d6cdf;
+  background: var(--primary);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto 32px auto;
-  padding: 16px 24px;
+  padding: 14px 24px;
   border-radius: 0 0 12px 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  box-shadow: var(--shadow-sm);
 }
 
 .nav-title {
@@ -29,46 +45,48 @@ body {
 .nav-buttons {
   display: flex;
   gap: 12px;
+  align-items: center;
 }
 
 .nav-buttons .nav-btn {
   background: #fff;
-  color: #2d6cdf;
+  color: var(--primary);
   border: none;
-  border-radius: 4px;
-  padding: 8px 18px;
+  border-radius: 6px;
+  padding: 8px 16px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(45,108,223,0.08);
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, transform 0.12s;
   text-decoration: none;
   outline: none;
   display: inline-block;
-  width: auto;
-  margin: 0;
-  text-align: center;
 }
 
 .nav-buttons .nav-btn:hover,
 .nav-buttons .nav-btn:focus {
-  background: #174ea6;
+  background: var(--primary-600);
   color: #fff;
+  transform: translateY(-1px);
 }
+
 /* Card styles for content */
 .card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 24px;
-  margin-bottom: 24px;
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
 }
 
 h3, h4 {
-  color: #2d6cdf;
+  color: var(--primary);
   margin-top: 0;
 }
 
+/* Inputs */
 form {
   display: flex;
   flex-wrap: wrap;
@@ -76,65 +94,105 @@ form {
   align-items: center;
 }
 
-input, select, textarea, button {
+input, select, textarea {
   font-size: 1rem;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #d0d7de;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
   outline: none;
-  transition: border 0.2s;
+  transition: border var(--transition-fast), box-shadow var(--transition-fast);
+  min-width: 0;
 }
 
 input:focus, select:focus, textarea:focus {
-  border-color: #2d6cdf;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(45,108,223,0.08);
 }
 
+/* BUTTONS - override old full-width behavior and add utility classes */
+/* Make native button inline by default (fixes giant action buttons) */
 button {
-  background: #2d6cdf;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  transition: background 0.2s;
-  display: block;
-  width: 100%;
-  margin: 12px auto;
-  padding: 12px 0;
-  text-align: center;
+  font-family: inherit;
+  display: inline-block;
+  padding: 8px 12px;
   border-radius: 6px;
-  font-size: 1.1rem;
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background var(--transition-fast), transform 120ms ease, box-shadow var(--transition-fast);
+  text-align: center;
+  line-height: 1;
 }
 
-button:hover {
-  background: #174ea6;
+/* hover/focus states */
+button:hover { background: var(--primary-600); transform: translateY(-1px); }
+button:focus { box-shadow: 0 0 0 4px rgba(45,108,223,0.12); outline: none; }
+
+/* Utility button classes (use in JSX when desired) */
+.btn { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; }
+.btn-primary { background: var(--primary); color: #fff; border: none; }
+.btn-primary:hover { background: var(--primary-600); }
+.btn-ghost { background: transparent; color: var(--primary); border: 1px solid rgba(45,108,223,0.08); }
+.btn-ghost:hover { background: rgba(45,108,223,0.06); }
+.btn-danger { background: transparent; color: #b91c1c; border: 1px solid rgba(185,28,28,0.08); }
+.btn-danger:hover { background: rgba(185,28,28,0.06); color: #8b1111; }
+
+.btn-sm { padding: 6px 8px; font-size: 0.85rem; border-radius: 6px; }
+.btn-lg { padding: 12px 18px; font-size: 1.05rem; border-radius: 10px; }
+.btn-icon { width:36px; height:36px; padding:0; justify-content:center; border-radius:8px; }
+.btn-block { display:block; width:100%; padding:12px 0; }
+
+/* Small icon-only accessibility */
+button[aria-label], .btn-icon { display:inline-flex; align-items:center; justify-content:center; }
+
+/* Action group for table rows */
+.action-group { display:inline-flex; gap:6px; align-items:center; }
+
+/* Tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.table th, .table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #eef2f6;
+  text-align: left;
+  vertical-align: middle;
+}
+.table thead th {
+  font-weight: 600;
+  color: var(--muted);
+  background: linear-gradient(180deg, rgba(0,0,0,0.01), transparent);
+}
+.table tbody tr:hover {
+  background: rgba(45,108,223,0.03);
 }
 
-ul {
-  padding-left: 20px;
+/* small helpers */
+ul { padding-left: 20px; }
+strong { display:block; margin-top:12px; color: var(--primary-600); }
+
+/* badges */
+.badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(45,108,223,0.08);
+  color: var(--primary);
+  font-weight: 600;
 }
 
-strong {
-  display: block;
-  margin-top: 12px;
-  color: #174ea6;
-}
+/* Ensure forms don't force full-width buttons unless .btn-block used */
+form .btn, form button { width: auto; }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .nav-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px;
-    gap: 8px;
-  }
-  .nav-title {
-    font-size: 1.2rem;
-  }
-  .card {
-    padding: 12px;
-  }
-  form {
-    flex-direction: column;
-    gap: 8px;
-  }
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .nav-card { max-width: 100%; padding: 12px; gap: 8px; }
+  .table th, .table td { padding: 8px; font-size: 0.9rem; }
+  .btn-icon { width:34px; height:34px; }
+  form { flex-direction: column; gap: 10px; align-items: stretch; }
 }

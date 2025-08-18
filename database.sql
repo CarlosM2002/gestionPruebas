@@ -65,14 +65,3 @@ CREATE TABLE IF NOT EXISTS "Recepcion" (
   "Estado" estado_recepcion NOT NULL,
   "Comentarios" TEXT
 );
-
--- Seed data: users (password = admin123 / dev123 / tester123, hashed with bcrypt)
-INSERT INTO "Usuario" ("Username","Contrasena","Rol") VALUES
-('admin','$2a$10$O3qV1PwI8z6L3uUZlI4NLODp1aXK9uU05zQJxJRW6wVbMEqWBlR7a','Admin'),
-('dev','$2a$10$O3qV1PwI8z6L3uUZlI4NLODp1aXK9uU05zQJxJRW6wVbMEqWBlR7a','Dev'),
-('tester','$2a$10$O3qV1PwI8z6L3uUZlI4NLODp1aXK9uU05zQJxJRW6wVbMEqWBlR7a','Tester');
-
--- optional sample TipoComponente, Componente and casoPrueba
-INSERT INTO "TipoComponente" ("Nombre","Descripcion") VALUES ('UI','Interfaz de usuario'),('API','Servicios');
-INSERT INTO "Componente" ("Nombre","Descripcion","IdTipoComponente") VALUES ('Login','Modulo de autenticacion',1),('Usuarios API','Servicios de usuarios',2);
-INSERT INTO "casoPrueba" ("IdComponente","Descripcion","CriteriosPrueba") VALUES (1,'Verificar login correcto','El sistema permite iniciar sesion con credenciales validas'),(2,'Crear usuario','Crear usuario via endpoint');

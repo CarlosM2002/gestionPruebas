@@ -10,7 +10,6 @@ Pasos de instalación:
    psql -U usuario -d pruebasdb -f database.sql
 2) Backend:
    cd backend
-   cp .env.example .env  # editar DATABASE_URL y JWT_SECRET
    npm install
    npm run dev
 3) Frontend:
